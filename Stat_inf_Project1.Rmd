@@ -1,8 +1,8 @@
 ---
 title: Analysis of the exponential distribution in R and comparing it with the Central Limit Theorem
 output:
-html_document:
-keep_md: yes
+      html_document:
+            keep_md: yes
 pdf_document: default
 ---
 
