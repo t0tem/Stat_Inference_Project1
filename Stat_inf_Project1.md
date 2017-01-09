@@ -8,40 +8,34 @@
 ## Overview
 This project is aimed to investigate the exponential distribution in R and compare it with the Central Limit Theorem. We make a simulation of 1000 averages of 40 exponentials and illustrate the properties of the obtained distribution (sample mean and variance are compared with theoretical ones).  
 We also show that the obtained distribution is approximately normal which complies with Central Limit Theorem.
-
 ##Simulations
 We take the rate parameter 'lambda' for the exponential distribution equal 0.2.
 
 ```r
 lambda <- 0.2
 ```
-
 Theoretical mean of exponential distribution is 1/lambda and the standard deviation is also 1/lambda.
 
 ```r
 mu <- 1/lambda
 sigma <- 1/lambda
 ```
-
 Sample size is 40
 
 ```r
 n <- 40
 ```
-
 And the number of simulations is 1000
 
 ```r
 nosim <- 1000
 ```
-
 We generate a matrix called 'sample' of random exponentials with given parameters. 
 
 ```r
 set.seed(11142)
 sample <- matrix(rexp(nosim * n, rate = lambda), nosim, n)
 ```
-
 The dimentions of the matrix are 1000 rows by 40 columns 
 
 ```r
@@ -51,22 +45,17 @@ dim(sample)
 ```
 ## [1] 1000   40
 ```
-
-
 ##Sample Mean versus Theoretical Mean
 From simulated data we generate a vector called 'sample_means' of 1000 averages of 40 exponentials
 
 ```r
 sample_means <- apply(sample, 1, mean)
 ```
-
 Now we can plot the histogram of sample distribution overlapping it with theoretical mean and observed mean of the sample averages (we'll use 'ggplot2' package in this project)
 
 ```r
 suppressWarnings(suppressMessages(library(ggplot2)))
 ```
-
-
 
 
 ```r
@@ -86,16 +75,12 @@ data.frame("Theretical Mean" = mu, "Sample.Mean" = mean(sample_means))
 ##   Theretical.Mean Sample.Mean
 ## 1               5    5.067507
 ```
-
-
 ##Sample Variance versus Theoretical Variance
 From simulated data we generate a vector called 'sample_vars' holding 1000 variances of 40 exponentials
-
 
 ```r
 sample_vars <- apply(sample, 1, var)
 ```
-
 Now we can plot the histogram of sample variances distribution overlapping it with theoretical variance and observed mean of the sample variances
 
 
@@ -124,7 +109,6 @@ In order to do it we will plot again a histogram of 1000 averages together with 
 
 
 
-
 ```r
 print(g3)
 ```
@@ -142,7 +126,6 @@ print(g4)
 ![](Stat_inf_Project1_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
 
 Thus, we can conclude that the distribution of the means of 40 exponentials behaves as predicted by **Central Limit Theorem**.
-
 
 \pagebreak
 
