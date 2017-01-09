@@ -8,6 +8,7 @@
 ## Overview
 This project is aimed to investigate the exponential distribution in R and compare it with the Central Limit Theorem. We make a simulation of 1000 averages of 40 exponentials and illustrate the properties of the obtained distribution (sample mean and variance are compared with theoretical ones).  
 We also show that the obtained distribution is approximately normal which complies with Central Limit Theorem.
+
 ##Simulations
 We take the rate parameter 'lambda' for the exponential distribution equal 0.2.
 
@@ -45,6 +46,7 @@ dim(sample)
 ```
 ## [1] 1000   40
 ```
+
 ##Sample Mean versus Theoretical Mean
 From simulated data we generate a vector called 'sample_means' of 1000 averages of 40 exponentials
 
