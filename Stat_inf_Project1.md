@@ -75,7 +75,7 @@ print(g1)
 
 ![](Stat_inf_Project1_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
-As we can see the distribution of averages is centered at the theoretical mean.  
+As we can see the distribution of averages is centered close to the theoretical mean.  
 Mean of the simulated averages is equal 5.067 which is very close to theoretical one:
 
 ```r
@@ -106,7 +106,7 @@ print(g2)
 
 ![](Stat_inf_Project1_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
 
-As we can see the distribution of variances is centered at the theoretical variance.    
+As we can see the distribution of variances is centered close to the theoretical variance.    
 Mean of the simulated variances is equal 25.84 which is very close to theoretical one:
 
 ```r
