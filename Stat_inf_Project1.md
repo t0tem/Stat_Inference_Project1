@@ -64,13 +64,6 @@ Now we can plot the histogram of sample means overla================
 
 ```r
 library(ggplot2)
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 3.3.2
-```
-
-```r
 g <- ggplot(data.frame(sample_means), aes(x = sample_means)) + 
       geom_histogram(binwidth = 0.5, color = "white", fill = "steelblue1") +
       geom_vline(xintercept = mu, color = "red", size = 2) +
