@@ -1,9 +1,8 @@
 # Analysis of the exponential distribution in R and comparing it with the Central Limit Theorem
+Vadim K.  
+2017-01-08  
 
 
-
-###_Vadim K._ 
-####_2017-01-08_
 
 ## Overview
 This project is aimed to investigate the exponential distribution in R and compare it with the Central Limit Theorem. We make a simulation of 1000 averages of 40 exponentials and illustrate the properties of the obtained distribution (sample mean and variance are compared with theoretical ones).  
@@ -37,15 +36,7 @@ We generate a matrix called 'sample' of random exponentials with given parameter
 set.seed(11142)
 sample <- matrix(rexp(nosim * n, rate = lambda), nosim, n)
 ```
-The dimentions of the matrix are 1000 rows by 40 columns 
 
-```r
-dim(sample)
-```
-
-```
-## [1] 1000   40
-```
 
 ##Sample Mean versus Theoretical Mean
 From simulated data we generate a vector called 'sample_means' of 1000 averages of 40 exponentials
@@ -55,16 +46,12 @@ sample_means <- apply(sample, 1, mean)
 ```
 Now we can plot the histogram of sample distribution overlapping it with theoretical mean and observed mean of the sample averages (we'll use 'ggplot2' package in this project)
 
-```r
-suppressWarnings(suppressMessages(library(ggplot2)))
-```
-
 
 ```r
 print(g1)
 ```
 
-![](Stat_inf_Project1_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+![](Stat_inf_Project1_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
 
 As we can see the distribution of averages is centered close to the theoretical mean.  
 Mean of the simulated averages is equal 5.067 which is very close to theoretical one:
@@ -91,7 +78,7 @@ Now we can plot the histogram of sample variances distribution overlapping it wi
 print(g2)
 ```
 
-![](Stat_inf_Project1_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+![](Stat_inf_Project1_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
 As we can see the distribution of variances is centered close to the theoretical variance.    
 Mean of the simulated variances is equal 25.84 which is very close to theoretical one:
@@ -111,22 +98,15 @@ In order to do it we will plot again a histogram of 1000 averages together with 
 
 
 
-```r
-print(g3)
-```
-
-![](Stat_inf_Project1_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
-
-As we can see that's very close to normal, comparing to the distribution of a large collection of random exponentials (see below)
-
 
 
 ```r
-print(g4)
+library(gridExtra)
+grid.arrange(g3, g4, nrow = 1)
 ```
 
-![](Stat_inf_Project1_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
-
+![](Stat_inf_Project1_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+As we can see that's very close to normal, comparing to the distribution of a large collection of random exponentials.  
 Thus, we can conclude that the distribution of the means of 40 exponentials behaves as predicted by **Central Limit Theorem**.
 
 \pagebreak
@@ -137,6 +117,7 @@ Here the full code for the plots
 
 
 ```r
+library(ggplot2)
 g1 <- ggplot(data.frame(sample_means), aes(x = sample_means)) + 
       geom_histogram(binwidth = 0.5, color = "white", fill = "steelblue1") +
       labs(list(title = "Distribution of 1000 averages of 40 exponentials", 
@@ -146,16 +127,17 @@ g1 <- ggplot(data.frame(sample_means), aes(x = sample_means)) +
       geom_vline(xintercept = mean(sample_means), color = "blue", size = 2) +
       annotate("text", label = "Theoretical Mean", 
                fontface = "bold", color = "red", 
-               x = 4.9, y = 100, size = 4.5, angle = 90) + 
+               x = 4.8, y = 100, size = 4, angle = 90) + 
       annotate("text", label = "Sample Mean", 
                fontface = "bold", color = "blue", 
-               x = 5.15, y = 100, size = 4.5, angle = 90)
+               x = 5.2, y = 100, size = 4, angle = 90) +
+      theme(plot.title = element_text(size=11))
 ```
 
 
 ```r
 g2 <- ggplot(data.frame(sample_vars), aes(x = sample_vars)) + 
-      geom_histogram(binwidth = 6, color = "white", fill = "steelblue1") +
+      geom_histogram(binwidth = 5, color = "white", fill = "steelblue1") +
       labs(list(title = "Distribution of 1000 variances of 40 exponentials", 
                 x = element_blank(),
                 y = element_blank())) +
@@ -163,10 +145,11 @@ g2 <- ggplot(data.frame(sample_vars), aes(x = sample_vars)) +
       geom_vline(xintercept = mean(sample_vars), color = "blue", size = 2) +
       annotate("text", label = "Theoretical Variance", 
                fontface = "bold", color = "red", 
-               x = 23, y = 100, size = 4.5, angle = 90) + 
+               x = 22, y = 100, size = 4, angle = 90) + 
       annotate("text", label = "Mean of sample variances", 
                fontface = "bold", color = "blue", 
-               x = 27, y = 100, size = 4.5, angle = 90)
+               x = 28, y = 100, size = 4, angle = 90) +
+      theme(plot.title = element_text(size=11))
 ```
 
 
@@ -183,7 +166,8 @@ g3 <- ggplot(data.frame(sample_means), aes(x = sample_means)) +
       scale_color_manual(values = c("blue4", "red"),
                          labels = c("Density function",
                                     "Normal Distribution"),
-                         name = "")
+                         name = "") +
+      theme(plot.title = element_text(size=11))
 ```
 
 
@@ -202,7 +186,8 @@ g4 <- ggplot(data.frame(rand_exp), aes(x = rand_exp)) +
       scale_color_manual(values = c("blue4", "red"),
                          labels = c("Density function",
                                     "Normal Distribution"),
-                         name = "")
+                         name = "") +
+      theme(plot.title = element_text(size=11))
 ```
 
 

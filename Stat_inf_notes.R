@@ -49,7 +49,7 @@ df <- data.frame(types, r_dat)
 
 #plotting with facets by factor
 g3 <- ggplot(df, aes(x = r_dat)) + 
-      geom_histogram(binwidth = 0.4, color = "white", fill = "steelblue1", aes(y = ..density..)) +
+      geom_histogram(color = "white", fill = "steelblue1", aes(y = ..density..)) +
       labs(list(title = "Distribution of normalized test statistic", 
                 x = element_blank(),
                 y = element_blank())) +
@@ -59,7 +59,7 @@ g3 <- ggplot(df, aes(x = r_dat)) +
                          labels = c("Standard Normal Distribution",
                                   "Density function for normalized data"),
                          name = "") + 
-      facet_grid(. ~ types)
+      facet_grid(. ~ types, scales = "free")
       
       
 print(g3)
