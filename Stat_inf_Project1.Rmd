@@ -1,7 +1,8 @@
 ---
-title: "Analysis of the exponential distribution in R and comparing it with the Central Limit Theorem"
+title: Analysis of the exponential distribution in R and comparing it with the Central
+  Limit Theorem
 author: "Vadim K."
-date: "2017-01-08"
+date: '2017-01-08'
 output:
   html_document:
     keep_md: yes
@@ -48,7 +49,7 @@ sample_means <- apply(sample, 1, mean)
 ```
 Now we can plot the histogram of sample distribution overlapping it with theoretical mean and observed mean of the sample averages (we'll use 'ggplot2' package in this project)
 ```{r echo = FALSE}
-library(ggplot2)
+suppressMessages(suppressWarnings(library(ggplot2)))
 g1 <- ggplot(data.frame(sample_means), aes(x = sample_means)) + 
       geom_histogram(binwidth = 0.5, color = "white", fill = "steelblue1") +
       labs(list(title = "Distribution of 1000 averages of 40 exponentials", 
@@ -195,7 +196,8 @@ g2 <- ggplot(data.frame(sample_vars), aes(x = sample_vars)) +
 
 ```{r}
 g3 <- ggplot(data.frame(sample_means), aes(x = sample_means)) + 
-      geom_histogram(binwidth = 0.4, color = "white", fill = "steelblue1", aes(y = ..density..)) +
+      geom_histogram(binwidth = 0.4, color = "white", 
+                     fill = "steelblue1", aes(y = ..density..)) +
       labs(list(title = "Distribution of 1000 averages of 40 exponentials", 
                 x = element_blank(),
                 y = element_blank())) +
@@ -214,7 +216,8 @@ g3 <- ggplot(data.frame(sample_means), aes(x = sample_means)) +
 rand_exp <- rexp(1000, lambda)
 
 g4 <- ggplot(data.frame(rand_exp), aes(x = rand_exp)) + 
-      geom_histogram(binwidth = 2.5, color = "white", fill = "steelblue1", aes(y = ..density..)) +
+      geom_histogram(binwidth = 2.5, color = "white", 
+                     fill = "steelblue1", aes(y = ..density..)) +
       labs(list(title = "Distribution of 1000 random exponentials", 
                 x = element_blank(),
                 y = element_blank())) +

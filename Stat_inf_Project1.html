@@ -213,7 +213,8 @@ g1 &lt;- ggplot(data.frame(sample_means), aes(x = sample_means)) +
                x = 28, y = 100, size = 4, angle = 90) +
       theme(plot.title = element_text(size=11))</code></pre>
 <pre class="r"><code>g3 &lt;- ggplot(data.frame(sample_means), aes(x = sample_means)) + 
-      geom_histogram(binwidth = 0.4, color = &quot;white&quot;, fill = &quot;steelblue1&quot;, aes(y = ..density..)) +
+      geom_histogram(binwidth = 0.4, color = &quot;white&quot;, 
+                     fill = &quot;steelblue1&quot;, aes(y = ..density..)) +
       labs(list(title = &quot;Distribution of 1000 averages of 40 exponentials&quot;, 
                 x = element_blank(),
                 y = element_blank())) +
@@ -229,7 +230,8 @@ g1 &lt;- ggplot(data.frame(sample_means), aes(x = sample_means)) +
 <pre class="r"><code>rand_exp &lt;- rexp(1000, lambda)
 
 g4 &lt;- ggplot(data.frame(rand_exp), aes(x = rand_exp)) + 
-      geom_histogram(binwidth = 2.5, color = &quot;white&quot;, fill = &quot;steelblue1&quot;, aes(y = ..density..)) +
+      geom_histogram(binwidth = 2.5, color = &quot;white&quot;, 
+                     fill = &quot;steelblue1&quot;, aes(y = ..density..)) +
       labs(list(title = &quot;Distribution of 1000 random exponentials&quot;, 
                 x = element_blank(),
                 y = element_blank())) +

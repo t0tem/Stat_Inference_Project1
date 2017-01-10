@@ -155,7 +155,8 @@ g2 <- ggplot(data.frame(sample_vars), aes(x = sample_vars)) +
 
 ```r
 g3 <- ggplot(data.frame(sample_means), aes(x = sample_means)) + 
-      geom_histogram(binwidth = 0.4, color = "white", fill = "steelblue1", aes(y = ..density..)) +
+      geom_histogram(binwidth = 0.4, color = "white", 
+                     fill = "steelblue1", aes(y = ..density..)) +
       labs(list(title = "Distribution of 1000 averages of 40 exponentials", 
                 x = element_blank(),
                 y = element_blank())) +
@@ -175,7 +176,8 @@ g3 <- ggplot(data.frame(sample_means), aes(x = sample_means)) +
 rand_exp <- rexp(1000, lambda)
 
 g4 <- ggplot(data.frame(rand_exp), aes(x = rand_exp)) + 
-      geom_histogram(binwidth = 2.5, color = "white", fill = "steelblue1", aes(y = ..density..)) +
+      geom_histogram(binwidth = 2.5, color = "white", 
+                     fill = "steelblue1", aes(y = ..density..)) +
       labs(list(title = "Distribution of 1000 random exponentials", 
                 x = element_blank(),
                 y = element_blank())) +
